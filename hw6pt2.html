@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>CNIT 133 - Homework 6, Part 2</title>
+  <meta name="description" content="Assignment: Homework 6 - Objects">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <link rel="stylesheet" href="css/styles.css">
+    
+     <style>
+        
+    
+      body {
+          background-color:cadetblue
+      }
+         #holygrail-container{display:grid; grid-template-columns: 190px 1fr 190px; background: cadetblue; height: 100%; min-width: 400px; min-height: 270px;
+         }
+        
+         header, footer {grid-column: span 4;
+                        }
+         
+         nav {display: inline; padding-bottom: 25px; display: flex; align-items: center;
+             }
+           
+            nav ul{list-style-type:none; padding:0; 
+                  }
+            
+            nav ul li{ display: inline-block;
+                       margin:0 5px;
+                       border:2px solid black;
+                      border-radius: 10px;
+                       margin-right: 350px;
+                       background-color: cadetblue;
+                       text-align:center;
+                       width: 150px;
+                       height: 30px; 
+                       line-height:30px;
+                        margin-bottom: 5px;}
+            
+            nav ul li a {text-decoration: none; font-weight: bold; color:white;
+                        }
+         
+         ul li { list-style-type: none; 
+          }
+ </style>
+         
+
+</head>
+
+<body>
+    <nav>
+    <ul>
+            <li><a href="https://pettycarlos.github.io/CNIT-133-Homework-1/">Homepage</a></li>
+             <li><a href="https://pettycarlos.github.io/hw2/">Homework 2</a></li>
+            <li><a href= "https://pettycarlos.github.io/hw3/">Homework 3</a></li>
+            <li><a href= "https://pettycarlos.github.io/CNIT-133-hw4/">Homework 4</a></li>
+            <li><a href="https://pettycarlos.github.io/hw5/">Homework 5</a></li>
+            <li><a href="https://pettycarlos.github.io/hw6/">Homework 6</a></li>
+            <li><a href= "https://pettycarlos.github.io/hw7/">Homework 7</a></li>
+            <li><a href="https://pettycarlos.github.io/hw8/">Homework 8</a></li>
+            
+        </ul>
+            </nav>
+            
+        
+            <ol>
+  <li><a href="hw6pt1.html">Part 1 - Math Obects (Functions Using Math.Round, Math.sqrt, Math.floor, toFixed()etc )  </a></li>
+  <li><a href="hw6pt2.html">String Method CharAt</a></li>
+  <li><a href="hw6pt3.html">Part 3 - String Method Split</a></li>
+</ol>
+
+  <div>
+    <div>
+      <h1 class="display-4">Homework 6 - Part 2</h1>
+      <p class="lead">Objects</p>
+    </div>
+  </div>
+
+  <!-- Main Body Content -->
+
+  <section>
+    
+
+    <div>
+
+      <h2>String Method CharAt</h2>
+      <br>
+      <form>
+
+        <div class="form-group">
+          <label for="textEntry">Enter Your Text Below</label>
+          <textarea class="form-control" id="textEntry" rows="3"></textarea>
+        </div>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="searchChar" placeholder="Enter Your Search Letter">
+          <div class="input-group-append">
+            <button class="btn btn-outline-warning" type="button" id="search">Search</button>
+            <button class="btn btn-outline-warning" type="button" id="clearFields">Clear Fields</button>
+          </div>
+        </div>
+
+        <textarea class="form-control" placeholder="Character Occurrence Will Be Shown Here" rows="1" name="results" id="textArea" readonly></textarea>
+
+      </form>
+
+    </div>
+
+   
+    
+  </section>
+
+ 
+  <script>
+    function searchData() {
+      var counter = 0;
+
+      var textEntry = document.getElementById("textEntry").value;
+      var textEntry = textEntry.toLowerCase();
+
+      var searchChar = document.getElementById("searchChar").value;
+      var searchCharLength = searchChar.length;
+      var searchChar = searchChar.toLowerCase().charAt(0);
+
+      var i;
+
+      for (i = 0; i < textEntry.length; i++) {
+        if (textEntry.charAt(i) == searchChar)
+          counter++;
+      }
+
+      if (searchChar === "") {
+        alert("\nInvalid search entry!\n\nPlease enter a letter and search again!");
+        document.getElementById("searchChar").value = "";
+        document.getElementById("textArea").value = "";
+        // window.location.reload();
+      } else if (searchCharLength >= 2) {
+        alert("\nInvalid search entry!\n\nPlease enter a single letter and search again!");
+        document.getElementById("searchChar").value = "";
+        document.getElementById("textArea").value = "";
+      } else if (counter == 0) {
+        var myWindow = window.open("", "MsgWindow", "width=300,height=100");
+        myWindow.document.write("<p><span style='font-weight: bold; font-style: italic; text-decoration: underline;'>" + searchChar + "</span> not found in text string!</p>");
+        document.getElementById("textArea").value = "";
+      } else {
+        document.getElementById("textArea").value = searchChar + " was found " + counter + " times";
+      }
+
+    }
+
+    function eraseText() {
+      // document.getElementById("enteredNumber").value = document.getElementById("enteredNumber").defaultValue;
+      // document.getElementById("textArea").value = "";
+      location.reload();
+    }
+
+    var el = document.getElementById('search');
+    el.addEventListener('click', searchData, false);
+
+    var el = document.getElementById('clearFields');
+    el.addEventListener('click', eraseText, false);
+  </script>
+
+ 
+</body>
+
+</html>

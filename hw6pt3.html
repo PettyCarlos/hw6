@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>CNIT 133 - Homework 6, Part 3</title>
+  <meta name="description" content="Assignment: Homework 6 - Objects">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="css/styles.css">
+     <style>
+        
+    
+      body {
+          background-color:cadetblue
+      }
+         #holygrail-container{display:grid; grid-template-columns: 190px 1fr 190px; background: cadetblue; height: 100%; min-width: 400px; min-height: 270px;
+         }
+        
+         header, footer {grid-column: span 4;
+                        }
+         
+         nav {display: inline; padding-bottom: 25px; display: flex; align-items: center;
+             }
+           
+            nav ul{list-style-type:none; padding:0; 
+                  }
+            
+            nav ul li{ display: inline-block;
+                       margin:0 5px;
+                       border:2px solid black;
+                      border-radius: 10px;
+                       margin-right: 350px;
+                       background-color: cadetblue;
+                       text-align:center;
+                       width: 150px;
+                       height: 30px; 
+                       line-height:30px;
+                        margin-bottom: 5px;}
+            
+            nav ul li a {text-decoration: none; font-weight: bold; color:white;
+                        }
+         
+         ul li { list-style-type: none; 
+          }
+ </style>
+
+</head>
+
+<body>
+    <nav>
+    <ul>
+            <li><a href="https://pettycarlos.github.io/CNIT-133-Homework-1/">Homepage</a></li>
+             <li><a href="https://pettycarlos.github.io/hw2/">Homework 2</a></li>
+            <li><a href= "https://pettycarlos.github.io/hw3/">Homework 3</a></li>
+            <li><a href= "https://pettycarlos.github.io/CNIT-133-hw4/">Homework 4</a></li>
+            <li><a href="https://pettycarlos.github.io/hw5/">Homework 5</a></li>
+            <li><a href="https://pettycarlos.github.io/hw6/">Homework 6</a></li>
+            <li><a href= "https://pettycarlos.github.io/hw7/">Homework 7</a></li>
+            <li><a href="https://pettycarlos.github.io/hw8/">Homework 8</a></li>
+            
+        </ul>
+            </nav>
+            
+        
+            <ol>
+  <li><a href="hw6pt1.html">Part 1 - Math Obects (Functions Using Math.Round, Math.sqrt, Math.floor, toFixed()etc )  </a></li>
+  <li><a href="hw6pt2.html">String Method CharAt</a></li>
+  <li><a href="hw6pt3.html">Part 3 - String Method Split</a></li>
+</ol>
+  <div>
+    <div>
+      <h1>Homework 6 - Part 3</h1>
+      <p>Objects</p>
+    </div>
+  </div>
+
+  <!-- Main Body Content -->
+
+  <section>
+
+
+    <div>
+
+      <h2>String Method Split - Telephone Number</h2>
+      <br>
+
+      <form>
+        <label for="phone-number">Phone Number</label>
+         <input id="phone-number">
+        <div class="input-group mb-3">
+          <input type="text" name="phone-number" class="form-control" id="enteredPN" placeholder="(999) 999-9999">
+          <div class="input-group-append">
+            <button class="btn btn-outline-warning" type="button" id="processNumber">Process</button>
+            <button class="btn btn-outline-warning" type="button" id="clearFields">Clear Fields</button>
+          </div>
+        </div>
+
+        <div class="form-inline">
+          <textarea class="form-control col-3" placeholder="Area Code" rows="1" name="results" id="part1" readonly></textarea>
+          <textarea class="form-control col-3 mx-auto" placeholder="Prefix" rows="1" name="results" id="part2" readonly></textarea>
+          <textarea class="form-control col-3" placeholder="Extension" rows="1" name="results" id="part3" readonly></textarea>
+        </div>
+
+      </form>
+
+    </div>
+
+    
+    
+  </section>
+
+ 
+  <script>
+    function processNumber() {
+      var enteredPN = document.getElementById("enteredPN").value;
+      var areaCode = enteredPN.substring(1,4);
+      var PNSplitResult = enteredPN.split(" ");
+
+      if (enteredPN === "" || enteredPN.length < 14) {
+        alert("\nInvalid entry!\n\nPlease enter a full phone number and try again!");
+        document.getElementById("part1").value = "";
+        document.getElementById("part2").value = "";
+        document.getElementById("part3").value = "";
+      } else {
+        document.getElementById("part1").value = areaCode;
+        document.getElementById("part2").value = PNSplitResult[1];
+        document.getElementById("part3").value = PNSplitResult[2];
+      }
+    }
+
+    function eraseText() {
+      // document.getElementById("enteredNumber").value = document.getElementById("enteredNumber").defaultValue;
+      // document.getElementById("textArea").value = "";
+      location.reload();
+    }
+
+    var el = document.getElementById('processNumber');
+    el.addEventListener('click', processNumber, false);
+
+    var el = document.getElementById('clearFields');
+    el.addEventListener('click', eraseText, false);
+  </script>
+
+
+  <script>
+    $('input[name="phone-number"]').mask('(000) 000 0000');
+  </script>
+
+</body>
+
+</html>
